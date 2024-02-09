@@ -1,7 +1,10 @@
+import YourProjectsComponent from "../atoms/YourProjectsComponent"
 
 function SidebarComponent() {
   return (
-    <div className="text-sky-400 bg-black h-full w-1/4 ">SidebarComponent</div>
+    <div className="bg-black h-full w-1/4 rounded-tr-3xl">
+      <YourProjectsComponent/>
+    </div>
   )
 }
 
