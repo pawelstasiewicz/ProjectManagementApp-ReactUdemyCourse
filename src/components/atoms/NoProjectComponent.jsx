@@ -1,10 +1,10 @@
 import BookImage from './../../assets/no-projects.png'
 
 
-function NoProjectComponent({ClickedCreateProjectButton}) {
+function NoProjectComponent({clickCreateProject}) {
 
     function handleClick(){    
-            ClickedCreateProjectButton(true)    
+		clickCreateProject(false)    
     }
 
 	return (
