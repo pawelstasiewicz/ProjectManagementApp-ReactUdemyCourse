@@ -2,7 +2,7 @@ import './AddTitlePopupStyle.css'
 import { useState } from 'react';
 
 function AddTitlePopupComponent({ clickExitBtn, onSend}) {
-	const [inputValue, setInputValue] = useState('')
+	const [inputValue, setInputValue] = useState("")
     
     function handleClick() {
 		clickExitBtn(true);
