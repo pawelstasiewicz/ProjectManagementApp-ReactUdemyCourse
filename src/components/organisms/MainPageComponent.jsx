@@ -5,14 +5,14 @@ import { useState } from 'react';
 
 function MainPageComponent() {
 	const [activatePopup, setActivatePopup] = useState(true)
-	let taskElement = ''
+	const [taskElement, setTaskElement] = useState([])
 
 	function handleChange(data){
 		setActivatePopup(data)
 	}
 
 	function createTask(task){
-		taskElement = task
+		setTaskElement(prevState => [...prevState, task])
 	}
 
 
