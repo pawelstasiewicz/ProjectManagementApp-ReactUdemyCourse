@@ -1,13 +1,25 @@
+import { useState } from 'react';
+
 function YourProjectsComponent({ clickAddProject, taskElement }) {
+	const [taskClick, setTaskClick] = useState(null);
+
 	function handleClick() {
 		clickAddProject(false);
 	}
 
+	function handleTaskClick(index) {
+		setTaskClick(index);
+	}
+
 	const taskList = taskElement.map((task, index) => {
 		return (
-			<li key={index} className='text-slate-500 ml-14 text-xl'>
-				{index + 1}. {task}
-			</li>
+			<button
+				key={index}
+				onClick={() => handleTaskClick(index)}
+				className={`text-slate-500 text-xl text-left w-fit ml-10 mt-3 p-1 ${taskClick === index ? 'bg-gray-500 text-white': '' }`}
+			>
+				{task}
+			</button>
 		);
 	});
 
