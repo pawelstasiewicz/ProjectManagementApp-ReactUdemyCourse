@@ -9,14 +9,17 @@ function YourProjectsComponent({ clickAddProject, taskElement }) {
 
 	function handleTaskClick(index) {
 		setTaskClick(index);
+		
 	}
+
+	
 
 	const taskList = taskElement.map((task, index) => {
 		return (
 			<button
 				key={index}
 				onClick={() => handleTaskClick(index)}
-				className={`text-slate-500 text-xl text-left w-fit ml-10 mt-3 p-1 ${taskClick === index ? 'bg-gray-500 text-white': '' }`}
+				className={`text-slate-500 text-xl text-left w-fit ml-10 mt-3 p-1 ${taskClick === index ? 'bg-gray-500 w-80 text-white': '' }`}
 			>
 				{task}
 			</button>
