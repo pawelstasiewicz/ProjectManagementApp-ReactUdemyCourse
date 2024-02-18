@@ -1,30 +1,30 @@
 import { useState } from 'react';
 
-function YourProjectsComponent({ clickAddProject, taskElement }) {
+function YourProjectsComponent({ clickAddProject, taskElement, onChildClick}) {
 	const [taskClick, setTaskClick] = useState(null);
-
-	function handleClick() {
-		clickAddProject(false);
-	}
-
-	function handleTaskClick(index) {
-		setTaskClick(index);
-		
-	}
-
 	
-
+	function handleTaskClick(index) {
+		setTaskClick(index);	
+		onChildClick(index)
+	}
+	
 	const taskList = taskElement.map((task, index) => {
 		return (
 			<button
-				key={index}
-				onClick={() => handleTaskClick(index)}
-				className={`text-slate-500 text-xl text-left w-fit ml-10 mt-3 p-1 ${taskClick === index ? 'bg-gray-500 w-80 text-white': '' }`}
+			key={index}
+			onClick={() => {
+				handleTaskClick(index)
+			}}
+			className={`text-slate-500 text-xl text-left w-fit ml-10 mt-3 p-1 ${taskClick === index ? 'bg-gray-500 w-80 text-white': '' }`}
 			>
 				{task}
 			</button>
 		);
 	});
+	
+	function handleClick() {
+		clickAddProject(false);
+	}
 
 	return (
 		<div className='flex flex-col mt-20'>

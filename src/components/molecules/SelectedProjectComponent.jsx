@@ -1,9 +1,9 @@
 import SelectedProjectNameComponent from "../atoms/SelectedProjectNameComponent"
 
-function SelectedProjectComponent() {
+function SelectedProjectComponent({ taskElement, indexElement }) {
   return (
     <>
-        <SelectedProjectNameComponent />
+        <SelectedProjectNameComponent taskElement={taskElement} indexElement={indexElement}/>
         
     </>
   )
