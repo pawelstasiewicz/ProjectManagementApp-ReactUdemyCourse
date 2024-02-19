@@ -21,6 +21,11 @@ function MainPageComponent() {
 		setIndexElement(index)
 	}
 	
+	function deleteTask(){
+		const newList = [...taskElement]
+		newList.splice(indexElement, 1)
+		setTaskElement(newList)
+	}
 
 
 	return (
@@ -29,7 +34,7 @@ function MainPageComponent() {
 				<SidebarComponent className='basin-1/4 z-0' clickAddProject={handleChange} taskElement={taskElement} handleChildClick={handleChildClick}/>
 				{taskElement.length === 0 ? 
 				 <MainScreenComponent className='basin-1/3 z-0' clickCreateProject={handleChange}/> :
-				<SelectedProjectComponent taskElement={taskElement} indexElement={indexElement}/>
+				<SelectedProjectComponent taskElement={taskElement} indexElement={indexElement} deleteTask={deleteTask}/>
 				}
 			</div>
 				{activatePopup ? '' : <AddTitlePopupComponent clickExitBtn={handleChange} onSend={createTask}/>}
