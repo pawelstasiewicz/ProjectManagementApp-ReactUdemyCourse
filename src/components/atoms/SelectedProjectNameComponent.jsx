@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function SelectedProjectNameComponent({ taskElement, indexElement }) {
+function SelectedProjectNameComponent({ taskElement, indexElement, deleteTask }) {
 	const [addTask, setAddTask] = useState('');
 	const [clickedBtn, setClickedBtn] = useState(true);
 
@@ -17,10 +17,10 @@ function SelectedProjectNameComponent({ taskElement, indexElement }) {
 			{console.log(taskElement)}
 			<div className='flex flex-row w-full justify-between mt-16 ml-10'>
 				<div>
-					<h1 className='text-5xl font-bold '>{taskElement.length === 1 ? taskElement[0] : taskElement[indexElement]}</h1>
+					<h1 className='text-5xl font-bold '>{taskElement[indexElement]}</h1>
 					<p className='mt-5 text-slate-500'>Dec 29, 2024</p>
 				</div>
-				<button className='h-5 my-auto mr-20'>Delete</button>
+				<button className='h-5 my-auto mr-20' onClick={deleteTask}>Delete</button>
 			</div>
 			<div className='mt-5 ml-10 mr-10 flex flex-row justify-between'>
 				<input
