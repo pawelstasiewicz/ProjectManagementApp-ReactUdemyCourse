@@ -1,8 +1,14 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
-function SelectedProjectNameComponent({ taskElement, indexElement, deleteTask }) {
+function SelectedProjectNameComponent({
+	taskElement,
+	indexElement,
+	deleteTask,
+}) {
 	const [addTask, setAddTask] = useState('');
 	const [clickedBtn, setClickedBtn] = useState(true);
+
+	const inputRef = useRef(null);
 
 	function handleInputChange(e) {
 		setAddTask(e.target.value);
@@ -12,15 +18,34 @@ function SelectedProjectNameComponent({ taskElement, indexElement, deleteTask })
 		setClickedBtn(false);
 	}
 
+	const changeDate = () => {
+		const selectedDate = inputRef.current.value;
+
+		const  paragraphDate = document.createElement('p')
+		paragraphDate.textContent = selectedDate
+		paragraphDate.style.margin = '10px 0 10px 0'
+
+		inputRef.current.parentNode.insertBefore(paragraphDate, inputRef.current.nextSibling)
+		inputRef.current.style.display = 'none'
+	};
+
 	return (
 		<div className='flex flex-col w-3/5 '>
-			{console.log(taskElement)}
 			<div className='flex flex-row w-full justify-between mt-16 ml-10'>
 				<div>
 					<h1 className='text-5xl font-bold '>{taskElement[indexElement]}</h1>
-					<p className='mt-5 text-slate-500'>Dec 29, 2024</p>
+					<div className='flex flex-row'>
+						<input
+							type='date'
+							className='text-slate-500 mt-10'
+							ref={inputRef}	
+						/>
+					</div>
+					<button onClick={changeDate} className='h-5 my-auto mt-3 mr-20'>+Add date</button>
 				</div>
-				<button className='h-5 my-auto mr-20' onClick={deleteTask}>Delete</button>
+				<button className='h-5 my-auto mr-20' onClick={deleteTask}>
+					Delete
+				</button>
 			</div>
 			<div className='mt-5 ml-10 mr-10 flex flex-row justify-between'>
 				<input

@@ -3,11 +3,14 @@ import SidebarComponent from '../molecules/SidebarComponent';
 import AddTitlePopupComponent from '../molecules/AddTitlePopupComponent';
 import SelectedProjectComponent from '../molecules/SelectedProjectComponent';
 import { useState } from 'react';
+import taskData from './../../data/tasksData.js'
 
 function MainPageComponent() {
 	const [activatePopup, setActivatePopup] = useState(true)
 	const [taskElement, setTaskElement] = useState([])
 	const [indexElement, setIndexElement] = useState()
+
+	{console.log(taskData)}
 
 	function handleChange(data){
 		setActivatePopup(data)
